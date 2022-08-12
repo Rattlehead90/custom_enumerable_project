@@ -7,6 +7,12 @@ module Enumerable
       i += 1 
     end
   end
+
+  def my_select
+    formatted_array = []
+    my_each { |element| formatted_array.push(element) if yield element}
+    formatted_array
+  end
 end
 
 # You will first have to define my_each
