@@ -13,6 +13,12 @@ module Enumerable
     my_each { |element| formatted_array.push(element) if yield element}
     formatted_array
   end
+
+  def my_all?
+    all_truthy = true
+    my_each { |element| all_truthy = false unless yield element}
+    all_truthy
+  end
 end
 
 # You will first have to define my_each
