@@ -40,6 +40,13 @@ module Enumerable
     my_each { |elem| expr.call(elem) }
     count
   end
+
+  def my_map
+    new_array = []
+    mapping = lambda { |el| yield el}
+    my_each { |el| new_array << mapping.call(el)}
+    new_array
+  end
 end
 
 # You will first have to define my_each
