@@ -25,6 +25,12 @@ module Enumerable
     my_each { |element| one_truthy = true if yield element }
     one_truthy
   end
+
+  def my_none?
+    one_truthy = false
+    my_each { |element| one_truthy = true if yield element }
+    !one_truthy
+  end
 end
 
 # You will first have to define my_each
