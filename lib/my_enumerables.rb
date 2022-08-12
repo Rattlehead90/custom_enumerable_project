@@ -31,6 +31,15 @@ module Enumerable
     my_each { |element| one_truthy = true if yield element }
     !one_truthy
   end
+
+  def my_count()
+    return length if !block_given?
+
+    count = 0
+    expr = block_given? ? ->(elem) { count += 1 if yield elem } : lambda { count += 1 }
+    my_each { |elem| expr.call(elem) }
+    count
+  end
 end
 
 # You will first have to define my_each
